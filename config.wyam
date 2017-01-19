@@ -1,0 +1,32 @@
+Settings.Host = "wyam-snipcart.netlify.com";
+GlobalMetadata["Title"] = "Snipcart powered Wyam static site";
+GlobalMetadata["Snipcart_API_Key"] = "YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0";
+
+#n -p Wyam.Yaml
+#n -p Wyam.Razor
+#n -p Wyam.Markdown
+
+Pipelines.Add("Products",
+    ReadFiles("products/*.md"),  // Read all markdown files in the "products" directory
+    FrontMatter(Yaml()),  // Load any frontmatter and parse it as YAML markup
+    Markdown(),  // Render the markdown content
+    Meta("Product", @doc.Content),  // Move the markdown content to metadata
+    Meta("Snipcart_API_Key", GlobalMetadata["Snipcart_API_Key"]),
+    Meta("Domain", Settings.Host),
+    Meta("ProductFile", string.Format(@"products\{0}.html", ((string)@doc["Title"]).ToLower().Replace(' ', '-'))),  // Use the product title as the filename and save it in metadata so we can use it in links later
+    Merge(
+        ReadFiles("products/products.cshtml")  // Load the Razor product page template
+    ),
+    Razor(),  // Compile and render the page template
+    WriteFiles((string)@doc["ProductFile"])  // Write the product file
+);
+
+Pipelines.Add("Home",
+    ReadFiles("{!_,}*.cshtml"),
+    Razor(),
+    WriteFiles(".html")
+);
+
+Pipelines.Add("Resources",
+	CopyFiles("**/*{!.cshtml,!.md,!.yaml,}")
+);

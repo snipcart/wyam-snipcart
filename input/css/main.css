@@ -1,0 +1,78 @@
+.body {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    background-image: url("http://wallpapercave.com/wp/0dWI3hG.jpg");
+    text-decoration: none;
+    color: white;
+}
+
+.snipcart-checkout:hover{
+  color: #FFF59D;
+  text-decoration: underline;
+}
+
+.snipcart-add-item{
+  font-size: 18px;
+  color: black;
+  background-color: white;
+  border: 0px;
+  border-radius: 3%;
+  padding: 10px;
+}
+
+.snipcart-add-item:hover{
+  box-shadow: 0 0 4px 2px rgba(0,0,0,0.5)
+}
+
+.product:hover{
+  box-shadow: 0 0 8px 4px rgba(0,0,0,0.5)
+}
+
+.snipcart-add-item:active{
+  box-shadow: 0 0 0 0;
+}
+
+.product-description{
+  width: 400px;
+  padding: 25px;
+  margin: 25px;
+  background-color: #CFD8DC;
+  color: black;
+  font-size: 20px;
+}
+
+.product-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.products{
+  display: flex;
+  align-self: center;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.product{
+  background-color: #CFD8DC;
+  color: black;
+  margin: 15px;
+  padding: 35px;
+  color: black;
+  font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: black;
+}
+a:hover {
+    color: black;
+}

@@ -1,0 +1,14 @@
+<h1>An e-commerce demo with Wyam & Snipcart</h1>
+
+<div class="products">
+@foreach(var doc in Documents["Products"])
+{
+    <a href="@doc["ProductFile"]">
+        <div class="product">
+                <img src="@doc["Image"]" width="150px" class="thumbnail"/>
+                <p>@doc["Title"]</p>
+                <p>@doc["Description"]</p>
+        </div>
+    </a>
+}
+</div>
